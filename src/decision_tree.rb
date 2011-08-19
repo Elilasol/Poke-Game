@@ -3,7 +3,8 @@ class Decision_Tree
 #::TRAINER_HASH.each do |t|
 #puts t[1]["NAME"]
 
-  def initialize(hero)
+  def initialize(hero, hero_array)
+	@heroes = hero_array
 
 	decide(hero)
 	perform(hero)
@@ -31,35 +32,42 @@ class Decision_Tree
   end
 
   def perform_action(action, hero)
-	puts action + " is being performed by " + hero.name
+	#puts action + " is being performed by " + hero.name
 
 	case action
 		when "Heal"
-			hero.pokemon[0]["CURRENT_HP"] = hero.pokemon_max_hp
+			hero.current_action_set(hero.name.to_s + " healing their pokemon.")
+			hero.pokemon(0)["CURRENT_HP"] = hero.pokemon_max_hp
 			hero.decision["Relaxing"] = 0
 			hero.decision["Random Battle"] = 3
 			
 		when "Fight Gym"
-			puts "Fighting a Gym for a badge attempt."
+			hero.current_action_set(hero.name.to_s + " fighting a gym for a badge.")
 			hero.decision["Relaxing"] += 3
+
 		when "Aquiring Pokemon"
-			puts "Locating and catching a pokemon."
+			hero.current_action_set(hero.name.to_s + " Locating and catching a pokemon.")
 			hero.decision["Relaxing"] += 1
+
 		when "EV Training"
-			puts "Training thier pokemon to be the best!"
+			hero.current_action_set(hero.name.to_s + " Training thier pokemon to be the best!")
 			hero.decision["Relaxing"] += 1
+
 		when "Arena Fighting"
-			puts "Battling in the arena matches!"
+			hero.current_action_set(hero.name.to_s + " Battling in the arena matches!")
 			hero.decision["Relaxing"] += 2
+
 		when "Reorganizing Pokemon Team"
-			puts "Switching thier pokemon around."
+			hero.current_action_set(hero.name.to_s + " Switching thier pokemon around.")
 			hero.decision["Relaxing"] += 1
+
 		when "Relaxing"
-			puts "Taking a break and resting"
+			hero.current_action_set(hero.name.to_s + " Taking a break and resting")
 			hero.decision["Relaxing"] = 0
+
 		when "Random Battle"
-			puts "Fighting in a random battle!"
-			hero.pokemon[0]["CURRENT_HP"] -= (0.1 * hero.pokemon_max_hp).to_i
+			hero.current_action_set(hero.name.to_s + " Fighting in a random battle!")
+			Battle.new(hero, @heroes[rand(3)])
 			hero.decision["Relaxing"] += 1
 	end
 		

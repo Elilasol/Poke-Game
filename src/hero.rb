@@ -13,6 +13,7 @@ class Hero
 	@pokemon = Array.new
 	@pokemon << catch_initial_pokemon
 	@badges = 0
+	@current_action = "No action decided upon yet."
 	@decision = Hash["Random Battle", 1, "Heal", 0, "Random Catch", 0, "Fight Trainer", 0, "Fight Gym", 0, "EV Training", 0, "Aquiring Pokemon", 0, "Arena Fighting", 0, "Breeding", 0, "Relaxing", 0, "Reoganizing Pokemon Team", 0]
   end
 
@@ -55,6 +56,14 @@ class Hero
 	puts "#{@decision}"
   end
 
+  def pokemon_list
+	@pokemon
+  end
+
+  def pokemon(location)
+	@pokemon[location]
+  end
+
   def pokemon_hp
 	@pokemon[0]["CURRENT_HP"]
   end
@@ -77,20 +86,55 @@ class Hero
 	base_hp = ::POKEMON_HASH[name]["HP"]
 	hp_iv = @pokemon[0]["HP_IV"]
 	level = @pokemon[0]["LEVEL"]
+	ev = 0
 
-	current_max_hp = (((hp_iv + base_hp + 50) * level) / 50) + 10
+	current_max_hp = (((hp_iv + base_hp + ev + 50) * level) / 50) + 10
   end
 
-  def pokemon
-	@pokemon
+  def pokemon_stat(pokemon, stat)
+	name = pokemon["POKEMON"]
+	base_stat = ::POKEMON_HASH[name][stat]
+	stat_iv = pokemon[stat + "_IV"]
+	level = pokemon["LEVEL"]
+	ev = 0
+
+	current_stat = (((stat_iv + base_stat + (ev / 8)) * level) / 50)
+  end
+
+  def pokemon_defense
+  end
+
+  def pokemon_sp_attack
+  end
+
+  def pokemon_sp_defense
+  end
+
+  def pokemon_speed
+  end
+
+  def pokemon_level
+	@pokemon[0]["LEVEL"]
+  end
+
+  def pokemon_level_gain
+	@pokemon[0]["LEVEL"] += 1
   end
 
   def sex
 	@sex
   end
 
+  def current_action_set(message)
+	@current_action = message
+  end
+
+  def current_action_get
+	@current_action
+  end
+
   def name
-	@name
+	@name.chomp(" ")
   end
 
   def risky
