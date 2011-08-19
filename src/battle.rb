@@ -30,7 +30,6 @@ class Battle
 		if second["CURRENT_HP"] <= 0
 			second["CURRENT_HP"] = 0
 			dead = true
-			puts second["POKEMON"] + " dies!"
 			winner(first)
 		end
 	
@@ -40,7 +39,6 @@ class Battle
 			if first["CURRENT_HP"] <= 0
 				first["CURRENT_HP"] = 0
 				dead = true
-				puts first["POKEMON"] + " dies!"
 				winner(second)
 			end
 		end
@@ -122,8 +120,6 @@ class Battle
 	if poke["LEVEL"] < 100
 		poke["LEVEL"] += 1
 	end
-	puts poke["POKEMON"] + " wins!"
-	puts poke
   end
 
 end
