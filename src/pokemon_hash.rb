@@ -22,13 +22,21 @@ class Pokemon_Hash
     file = File.open( filename )
     ret = Hash.new
     
-    yp = YAML::parse_documents( file ) do |tree|
-      t = tree.transform
-	if filename == "pokemon.txt"
-		ret[t['NAME']] = t
-	else ret[t['GYM']] = t
+	yp = YAML::parse_documents( file ) do |tree| 
+		t = tree.transform
+
+		case filename
+			when "pokemon.txt"
+				ret[t['NAME']] = t
+			when "trainers.txt"
+				ret[t['GYM']] = t
+			when "route_1.txt"
+				ret[t['NAME']] = t
+			else
+				puts "ERROR: FILE NOT PROGRAMMED"
+		end
 	end
-    end
+    
 
     file.close
 

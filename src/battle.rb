@@ -11,6 +11,8 @@ class Battle
 	trainer_one_poke = trainer_one.pokemon(0)
 	trainer_two_poke = trainer_two.pokemon(0)
 
+	random_wild_poke
+
 	dead = false
 	trainer_one_poke["CURRENT_HP"] = stat_calc(trainer_one_poke, "HP")
 	trainer_two_poke["CURRENT_HP"] = stat_calc(trainer_two_poke, "HP")
@@ -30,7 +32,7 @@ class Battle
 		if second["CURRENT_HP"] <= 0
 			second["CURRENT_HP"] = 0
 			dead = true
-			winner(first)
+			winner(first, second)
 		end
 	
 		if dead != true
@@ -39,7 +41,7 @@ class Battle
 			if first["CURRENT_HP"] <= 0
 				first["CURRENT_HP"] = 0
 				dead = true
-				winner(second)
+				winner(second, first)
 			end
 		end
 	end
@@ -116,9 +118,43 @@ class Battle
 	stat
   end
 
-  def winner(poke)
-	if poke["LEVEL"] < 100
-		poke["LEVEL"] += 1
+  def random_wild_poke
+	
+	k = Array.new
+	::ROUTE_1_HASH.each do |j|
+		k << j[1]["RATE"]
+		k << j[0]
+	end
+	
+	rand_number = rand(100)
+	current_check = 0
+	random_poke = nil
+
+	::ROUTE_1_HASH.size.times do |i|
+		if random_poke == nil
+			if rand_number < k[i * 2] + current_check 
+				random_poke = k[(i * 2) + 1]
+			else 
+				current_check += k[i * 2]
+			end
+		end
+	end
+
+	puts "testing random poke roll"
+	puts ::ROUTE_1_HASH[random_poke]
+	puts "Done testing"
+
+	min = ::ROUTE_1_HASH[random_poke]["MIN"]
+	max = ::ROUTE_1_HASH[random_poke]["MAX"]
+
+	puts min
+	puts max
+
+  end
+
+  def winner(winner, loser)
+	if winner["LEVEL"] < 100
+		winner["LEVEL"] += 1
 	end
   end
 
