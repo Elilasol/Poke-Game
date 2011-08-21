@@ -6,7 +6,10 @@ require 'name_generator'
 class Hero
 
   def initialize
-	@sex = random_sex(9)
+
+	#4 is 50%, dont ask me, ask veekun.
+	@sex = random_sex(4) 
+
 	@name = random_name("@sex")
 	@risky = random_personality_trait(4, 25)
 	@int = random_personality_trait(4, 25)
@@ -18,19 +21,44 @@ class Hero
   end
 
   def catch_initial_pokemon
+	poke = ""
 	random = rand(3)
 		case random
-			when 0 ; poke = "Bulbasaur"
-			when 1 ; poke = "Charmander"
-			when 2 ; poke = "Squirtle"
+			when 0
+				poke = "Bulbasaur"
+			when 1
+				poke = "Charmander"
+			when 2
+				poke = "Squirtle"
 		end
-	pokemon_hash = Hash[ "POKEMON" => poke, "SEX" => random_sex(0), "LEVEL" => 5, "EXP" => 0, "CURRENT_HP" => 1, "HP_IV" => rand(32), "ATK_IV" => rand(32), "DEF_IV" => rand(32), "SPATK_IV" => rand(32), "SPDEF_IV" => rand(32), "SPEED_IV" => rand(32), "HP_EV" => 0, "ATK_EV" => 0, "DEF_EV" => 0, "SPATK_EV" => 0, "SPDEF_EV" => 0, "SPEED_EV" => 0 ]
+	pokemon_hash = Hash[ "POKEMON" => poke, "SEX" => random_sex(::POKEMON_HASH[poke]["GENDER"]), "LEVEL" => 5, "EXP" => 0, "CURRENT_HP" => 1, "HP_IV" => rand(32), "ATK_IV" => rand(32), "DEF_IV" => rand(32), "SPATK_IV" => rand(32), "SPDEF_IV" => rand(32), "SPEED_IV" => rand(32), "HP_EV" => 0, "ATK_EV" => 0, "DEF_EV" => 0, "SPATK_EV" => 0, "SPDEF_EV" => 0, "SPEED_EV" => 0 ]
   end
 
-  def random_sex(female_chance)
-	if rand(20) <= female_chance
-		"Female"
-	else "Male"
+  def random_sex(chance)
+
+	case chance
+		when -1
+			female_chance = -1
+		when 0
+			female_chance = 0
+		when 1
+			female_chance = 5
+		when 2
+			female_chance = 25
+		when 4
+			female_chance = 50
+		when 6
+			female_chance = 75
+		when 8
+			female_chance = 100
+	end
+	
+	if female_chance != -1
+		if rand(100 + 1) <= female_chance
+			"Female"
+		else "Male"
+		end
+	else "Genderless"
 	end
   end
 
