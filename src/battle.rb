@@ -119,26 +119,19 @@ class Battle
   end
 
   def random_wild_poke
-	
-	k = Array.new
-	::ROUTE_1_HASH.each do |j|
-		k << j[1]["RATE"]
-		k << j[0]
-	end
-	
-	rand_number = rand(100)
-	current_check = 0
-	random_poke = nil
 
-	::ROUTE_1_HASH.size.times do |i|
-		if random_poke == nil
-			if rand_number < k[i * 2] + current_check 
-				random_poke = k[(i * 2) + 1]
-			else 
-				current_check += k[i * 2]
-			end
-		end
-	end
+    # grab the route's pokemon and their rates and save them in a simpler hash
+    pokemon_hash = {}
+    ::ROUTE_1_HASH.each {|p| pokemon_hash{p[0]} = p[1]}
+    
+    # pick a random value from 1 to the size of the population
+    population_size = pokemon_hash.each_value.inject(:+)
+    random_value = rand(population_size) + 1
+
+    # subtract from the random value until you reach zero or less and return
+    # the name of the pokemon that wins
+    pokemon_hash.each.find {|poke| random_value - poke[1] <=0}[0]
+  end
 
 	puts "testing random poke roll"
 	puts ::ROUTE_1_HASH[random_poke]
