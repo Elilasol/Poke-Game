@@ -8,6 +8,11 @@ class Pokemon
     rand(20) <= 0 ? "Female" : "Male"
 	end
 
+  def self.stat_definition(name)
+    define_method(name) {
+      generic_stat("#{name}".to_sym)
+    }
+  end
 
   # instance methods
 
@@ -19,7 +24,7 @@ class Pokemon
     @sex = Pokemon.random_sex(type)
     @level = 5
     @experience = 0
-    @damage => 0 
+    @damage = 0 
     @ivs = { :hp => rand(32),
              :atk => rand(32),
              :def => rand(32),
@@ -35,23 +40,26 @@ class Pokemon
   end
 
   def max_hp
-    (((ivs[:hp] + gtype["HP"] + evs[:hp] + 50) * @level) / 50) + 10
+    (((@ivs[:hp] + gtype["HP"] + @evs[:hp] + 50) * @level) / 50) + 10
   end
 
   def hp_percent
     1.0 - (@damage.to_f / max_hp)
   end
 
-  # dynamic code to be entered here for the various stats to point to #generic_stat
+  stat_definition :atk
+  stat_definition :def
+  stat_definition :spatk
+  stat_definition :spdef
+  stat_definition :speed
+
+  private
 
   def generic_stat(stat_name)
     stat_string = stat_name.to_s.upcase
 
-    (((ivs[stat_name] + gtype[stat_string] + (evs[stat_name / 8)) * @level) / 50)
+    (((@ivs[stat_name] + gtype[stat_string] + (@evs[stat_name] / 8)) * @level) / 50)
   end
-
-
-  private
 
   # pokemon genotype shortcut
   def gtype
