@@ -8,6 +8,7 @@ require 'battle'
 require 'curses'
 require 'decision_tree'
 
+ROUTE_1_HASH = Pokemon_Hash.read("route_1.txt")
 POKEMON_HASH = Pokemon_Hash.read("pokemon.txt")
 TRAINER_HASH = Pokemon_Hash.read("trainers.txt") 
 ROUTE_1_HASH = Pokemon_Hash.read("route_1.txt") 

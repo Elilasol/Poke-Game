@@ -28,16 +28,17 @@ class Battle
       if stat_calc(trainer_two_poke, "SPEED") > stat_calc(trainer_one_poke, "SPEED")
         first = trainer_two_poke
         second = trainer_one_poke
-end
+
+	 end
 
       use_attack(first, second, attack = "Tackle")
-
+		
       if second["CURRENT_HP"] <= 0
         second["CURRENT_HP"] = 0
         dead = true
         winner(first, second)
       end
-
+	
       if dead != true
         use_attack(second, first, attack = "Tackle")
 
@@ -106,7 +107,7 @@ end
       max_hp = (((hp_iv + base_hp + ev + 50) * level) / 50) + 10
       current_hp = poke["CURRENT_HP"] + 0.0
       
-      stat = current_hp / current_max_hp * 100
+      stat = current_hp / current_max_hp * 100	
     
     else
       name = poke["POKEMON"]
