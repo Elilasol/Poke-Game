@@ -47,6 +47,11 @@ class Pokemon
     1.0 - (@damage.to_f / max_hp)
   end
 
+  def hp
+    current_hp = max_hp - @damage
+    current_hp > 0 ? current_hp : 0
+  end
+
   stat_definition :atk
   stat_definition :def
   stat_definition :spatk
