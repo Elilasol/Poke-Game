@@ -1,0 +1,10 @@
+def normal_die(size, divisions = 4)
+
+dice = Array.new(size, divisions)
+remainder = size % divisions
+
+(0..(divisions -1)).each {|i| dice[i] += 1} if remainder > 0
+
+dice[0] -= 1
+dice.inject{|sum, die| sum + rand(die + 1)}
+end

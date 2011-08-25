@@ -1,0 +1,10 @@
+#---
+NAME: Rattata
+RATE: 50
+MIN: 2
+MAX: 4
+---
+NAME: Pidgey
+RATE: 50
+MIN: 2
+MAX: 5

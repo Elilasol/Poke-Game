@@ -2,16 +2,16 @@
 require 'rubygems' rescue nil
 
 $:<<'src'
-require 'hero'
+require 'trainer'
 require 'pokemon_hash'
 require 'battle'
 require 'curses'
 require 'decision_tree'
 require 'gosu'
 
-POKEMON_HASH = Pokemon_Hash.read("pokemon.txt")
-TRAINER_HASH = Pokemon_Hash.read("trainers.txt")
-ROUTE_1_HASH = Pokemon_Hash.read("route_1.txt")
+POKEMON_HASH = Pokemon_Hash.read("files/etc/pokemon.txt")
+TRAINER_HASH = Pokemon_Hash.read("files/trainers/trainers.txt")
+ROUTE_1_HASH = Pokemon_Hash.read("files/routes/route_1.txt")
 DECISION_IMPORTANCE = Hash["Heal", 9, "Fight Trainer", 8, "Fight Gym", 7, "Aquiring Pokemon", 6, "EV Training", 5, "Arena Fighting", 4, "Breeding", 3, "Reorganizing Pokemon Team", 2, "Random Battle", 1, "Relaxing", 0 ]
 
 
@@ -27,7 +27,7 @@ class GameWindow < Gosu::Window
   attr_reader :message_8
   attr_reader :message_9
   attr_reader :message_10
-  attr_reader :hero_array
+  attr_reader :trainer_array
   attr_reader :message_array
 
   def initialize
@@ -40,10 +40,8 @@ class GameWindow < Gosu::Window
 	@player = Player.new(self)
 	@player.warp(320, 240)
 
-	@star_anim = Gosu::Image::load_tiles(self, "media/Star.png", 25, 25, false)
-	@stars = Array.new
-
-	@hero_array = make_hero_array
+	@trainer_array = make_trainer_array
+	@second = 1
 
 
 	@message_1 ||= "1"
@@ -78,17 +76,25 @@ class GameWindow < Gosu::Window
 	
 	@past ||= Time.now.to_i
 	
+	
+	if Time.now.to_i - @past >= @second
+		@second += 1
+		puts "1 second"
+  	end
+	
 	if Time.now.to_i - @past >= 5
+		puts "5 seconds"
 		@past = Time.now.to_i
-			
-		@hero_array.each do |i|
-			Decision_Tree.new(i, @hero_array)
+		@second = 0
+		
+		@trainer_array.each do |i|
+			Decision_Tree.new(i, @trainer_array)
 			output = i.current_action_get.to_s
 			display_messages(output)
-			display_messages(i.pokemon_level)
+			display_messages(i.pokemon[0].level)
 			
 		end
-  end
+  	end
 
   end
 
@@ -127,16 +133,16 @@ class GameWindow < Gosu::Window
 	@message_10 = message
   end
 
-  def make_hero_array
-	n = 3
-	display_messages("Adding " + n.to_s + " Heroes.")
+  def make_trainer_array
+	n = 1000
+	display_messages("Adding " + n.to_s + " trainers.")
 
-	hero_array = Array.new
+	trainer_array = Array.new
 		n.times do |i|
-			hero_array << @hero = Hero.new
+			trainer_array << @trainer = Trainer.new
 		end
 
-	hero_array
+	trainer_array
   end
 
 end
