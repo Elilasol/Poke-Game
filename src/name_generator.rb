@@ -18,6 +18,6 @@ class NameGenerator
   end
 
   def generate_names(start_pairs, count = 1)
-    name = generate_name(start_pairs[rand start_pairs.length]).capitalize
+    generate_name(start_pairs[rand start_pairs.length]).capitalize
   end
 end

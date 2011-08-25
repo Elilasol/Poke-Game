@@ -22,15 +22,15 @@ class Pokemon_Hash
     file = File.open( filename )
     ret = Hash.new
     
-	yp = YAML::parse_documents( file ) do |tree| 
+	YAML::parse_documents( file ) do |tree| 
 		t = tree.transform
 
 		case filename
-			when "pokemon.txt"
+			when "files/etc/pokemon.txt"
 				ret[t['NAME']] = t
-			when "trainers.txt"
+			when "files/trainers/trainers.txt"
 				ret[t['GYM']] = t
-			when "route_1.txt"
+			when "files/routes/route_1.txt"
 				ret[t['NAME']] = t
 			else
 				puts "ERROR: FILE NOT PROGRAMMED"
@@ -41,42 +41,6 @@ class Pokemon_Hash
     file.close
 
     return ret
-  end
-
-  ##
-  # Return a given creature (called by type)
-  #
-  def Pokemon_Hash.create(game, name, x, y, sex=:M, age=-1, speed=1)
-    data = @@creature_types[name]
-
-    atts = data
-
-    age=rand(50) if age == -1
-    atts["AGE"] = age
-    if atts["PX"].respond_to? :intern
-      atts["PX"] = atts["PX"].intern
-    end
-    atts["SEX"] = sex
-
-    c = Creature.new(game, x, y, speed, data['AI'], atts)
-    
-    return c
-  end
-
-  ##
-  # Returns a randomly created creature
-  #
-  def Pokemon_Hash.create_random(game, x, y, speed=1)
-    i = rand(@@creature_types.length)
-    name = @@creature_types.keys[i]
-    return Pokemon_Array.create(game, name, x, y, speed)
-  end
-
-  ##
-  # Returns an array with all the creature types
-  #
-  def Pokemon_Hash.names
-    return @@creature_types.keys
   end
 
 end

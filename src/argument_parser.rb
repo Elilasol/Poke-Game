@@ -9,8 +9,8 @@ class ArgumentParser
       ["--number-of-words", "-n", GetoptLong::OPTIONAL_ARGUMENT]
     )
 	if sex == "Male"
-		@data_file = "boy.txt"
-	else @data_file = "girl.txt"
+		@data_file = "files/etc/boy.txt"
+	else @data_file = "files/etc/girl.txt"
 	end 
     @words_to_generate = 1
   end

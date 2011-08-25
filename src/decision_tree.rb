@@ -3,21 +3,21 @@ class Decision_Tree
 #::TRAINER_HASH.each do |t|
 #puts t[1]["NAME"]
 
-  def initialize(hero, hero_array)
-	@heroes = hero_array
+  def initialize(trainer, trainer_array)
+	@trainers = trainer_array
 
-	decide(hero)
-	perform(hero)
+	decide(trainer)
+	perform(trainer)
   end
 
-  def perform(hero)
+  def perform(trainer)
 
 	decision_levels = nil
 
 	i = 7
 	while decision_levels == nil do
 
-		decision_levels_check = hero.decision.select{|k, v| v == i}
+		decision_levels_check = trainer.decision.select{|k, v| v == i}
 		if decision_levels_check.length >= 1
 			decision_levels = decision_levels_check
 		end
@@ -25,50 +25,50 @@ class Decision_Tree
 	end
 
 	if decision_levels.length > 1
-		perform_action(dilemma(decision_levels), hero)
-	else perform_action(decision_levels.keys[0].to_s, hero)
+		perform_action(dilemma(decision_levels), trainer)
+	else perform_action(decision_levels.keys[0].to_s, trainer)
 	end
 
   end
 
-  def perform_action(action, hero)
-	#puts action + " is being performed by " + hero.name
+  def perform_action(action, trainer)
+	#puts action + " is being performed by " + trainer.name
 
 	case action
 		when "Heal"
-			hero.current_action_set(hero.name.to_s + " healing their pokemon.")
-			hero.pokemon(0)["CURRENT_HP"] = hero.pokemon_max_hp
-			hero.decision["Relaxing"] = 0
-			hero.decision["Random Battle"] = 3
+			trainer.current_action_set(trainer.name.to_s + " healing their pokemon.")
+			trainer.pokemon[0].heal
+			trainer.decision["Relaxing"] = 0
+			trainer.decision["Random Battle"] = 3
 			
 		when "Fight Gym"
-			hero.current_action_set(hero.name.to_s + " fighting a gym for a badge.")
-			hero.decision["Relaxing"] += 3
+			trainer.current_action_set(trainer.name.to_s + " fighting a gym for a badge.")
+			trainer.decision["Relaxing"] += 3
 
 		when "Aquiring Pokemon"
-			hero.current_action_set(hero.name.to_s + " Locating and catching a pokemon.")
-			hero.decision["Relaxing"] += 1
+			trainer.current_action_set(trainer.name.to_s + " Locating and catching a pokemon.")
+			trainer.decision["Relaxing"] += 1
 
 		when "EV Training"
-			hero.current_action_set(hero.name.to_s + " Training thier pokemon to be the best!")
-			hero.decision["Relaxing"] += 1
+			trainer.current_action_set(trainer.name.to_s + " Training thier pokemon to be the best!")
+			trainer.decision["Relaxing"] += 1
 
 		when "Arena Fighting"
-			hero.current_action_set(hero.name.to_s + " Battling in the arena matches!")
-			hero.decision["Relaxing"] += 2
+			trainer.current_action_set(trainer.name.to_s + " Battling in the arena matches!")
+			trainer.decision["Relaxing"] += 2
 
 		when "Reorganizing Pokemon Team"
-			hero.current_action_set(hero.name.to_s + " Switching thier pokemon around.")
-			hero.decision["Relaxing"] += 1
+			trainer.current_action_set(trainer.name.to_s + " Switching thier pokemon around.")
+			trainer.decision["Relaxing"] += 1
 
 		when "Relaxing"
-			hero.current_action_set(hero.name.to_s + " Taking a break and resting")
-			hero.decision["Relaxing"] = 0
+			trainer.current_action_set(trainer.name.to_s + " Taking a break and resting")
+			trainer.decision["Relaxing"] = 0
 
 		when "Random Battle"
-			hero.current_action_set(hero.name.to_s + " Fighting in a random battle!")
-			Battle.new(hero, @heroes[rand(3)])
-			hero.decision["Relaxing"] += 1
+			trainer.current_action_set(trainer.name.to_s + " Fighting in a random battle!")
+			Battle.new(trainer, @trainers[rand(3)])
+			trainer.decision["Relaxing"] += 1
 	end
 		
   end
@@ -86,21 +86,21 @@ class Decision_Tree
 	dilemma_decision
   end
 
-  def decide(hero)
-	hero.decision.merge!(pokemon_status(hero))
+  def decide(trainer)
+	trainer.decision.merge!(pokemon_status(trainer))
   end
 
-  def pokemon_status(hero)
+  def pokemon_status(trainer)
 
-	percent = hero.pokemon_hp_percent
-	risky = hero.risky - 50
-	hero_opinion = (percent * (1 + (risky / 100.0)))
+	percent = trainer.pokemon[0].hp_percent * 100
+	risky = trainer.risky - 50
+	trainer_opinion = (percent * (1 + (risky / 100.0)))
 
 	heal_hash = Hash.new
 
 	if percent < 100
 
-		case hero_opinion 
+		case trainer_opinion 
 			when 85..100
 				heal_hash["Heal"] = 1
 			when 70..84
@@ -122,18 +122,6 @@ class Decision_Tree
 
 	heal_hash
 
-  end
-
-  def pokemon_hp_percent(hero)
-
-	name = hero.pokemon[0]["POKEMON"]
-	base_hp = ::POKEMON_HASH[name]["HP"]
-	hp_iv = hero.pokemon[0]["HP_IV"]
-	level = hero.pokemon[0]["LEVEL"]
-
-	current_max_hp = (((hp_iv + base_hp + 50) * level) / 50) + 10
-	current_hp = hero.pokemon[0]["CURRENT_HP"] + 0.0
-	percent_hp = current_hp / current_max_hp * 100	
   end
 
 end
