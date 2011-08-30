@@ -16,9 +16,7 @@ DECISION_IMPORTANCE = Hash["Heal", 9, "Fight Trainer", 8, "Fight Gym", 7, "Aquir
   class Game
   	def initialize
 
-    kanto = Island.new("Kanto")
-    
-    @trainer_array = kanto.trainers
+    @kanto = Island.new("Kanto")
     
   	@scr = Curses.init_screen
   	@scr.keypad(true)
@@ -28,9 +26,6 @@ DECISION_IMPORTANCE = Hash["Heal", 9, "Fight Trainer", 8, "Fight Gym", 7, "Aquir
 	  @loopnumber = 1
 	
   	handle_input(@scr)
-    
-
-
   	end
   	
   end 
@@ -41,9 +36,7 @@ DECISION_IMPORTANCE = Hash["Heal", 9, "Fight Trainer", 8, "Fight Gym", 7, "Aquir
 
     if @runlevel == 1
       if (loopnumber % 5) == 0  
-        @trainer_array.each do |i|
-          Decision_Tree.new(i, @trainer_array)
-        end
+        @kanto.pulse
     
       end
     end

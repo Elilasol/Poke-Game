@@ -31,7 +31,7 @@ class GameWindow < Gosu::Window
 	super(640, 480, false)
 	self.caption = "Poke Game"
   
-  kanto = Island.new("Kanto")
+  @kanto = Island.new("Kanto")
   
 	@font = Gosu::Font.new(self, Gosu::default_font_name, 20)
 
@@ -39,8 +39,6 @@ class GameWindow < Gosu::Window
 
 	@player = Player.new(self)
 	@player.warp(320, 240)
-
-  @trainer_array = kanto.trainers
   
 	@second = 1
 
@@ -88,13 +86,7 @@ class GameWindow < Gosu::Window
 		@past = Time.now.to_i
 		@second = 0
 		
-		@trainer_array.each do |i|
-			Decision_Tree.new(i, @trainer_array)
-			output = i.current_action_get.to_s
-			display_messages(output)
-			display_messages(i.pokemon[0].level)
-      
-		end
+    @kanto.pulse
   	end
 
   end

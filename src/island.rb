@@ -42,6 +42,12 @@ class Island
     trainer_array
   end
   
+  def pulse
+    @trainers.each do |i|
+      Decision_Tree.new(i, @trainer_array)
+    end
+  end
+  
   def trainers
     @trainers
   end
