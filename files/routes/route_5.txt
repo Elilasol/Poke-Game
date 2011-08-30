@@ -1,0 +1,25 @@
+#---
+NAME: Bellsprout
+RATE: 20
+MIN: 13
+MAX: 16
+---
+NAME: Mankey
+RATE: 20
+MIN: 10
+MAX: 16
+---
+NAME: Meowth
+RATE: 20
+MIN: 10
+MAX: 16
+---
+NAME: Oddish
+RATE: 20
+MIN: 13
+MAX: 16
+---
+NAME: Pidgey
+RATE: 20
+MIN: 13
+MAX: 16

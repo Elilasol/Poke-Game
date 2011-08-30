@@ -1,0 +1,20 @@
+#---
+NAME: Drowzee
+RATE: 25
+MIN: 9
+MAX: 15
+---
+NAME: Ekans
+RATE: 20
+MIN: 12
+MAX: 15
+---
+NAME: Sandshrew
+RATE: 20
+MIN: 12
+MAX: 15
+---
+NAME: Spearow
+RATE: 35
+MIN: 13
+MAX: 17

@@ -69,6 +69,10 @@ class Pokemon
     @damage = 0
   end
   
+  def ivs
+    @ivs
+  end
+  
   def owner
     @owner
   end
@@ -100,17 +104,9 @@ class Pokemon
     defeated_level = defeated_pokemon.level
     participants = 1
     
-    @experience += exp_gained = ((wild * owner_check * lucky_egg * base_exp * defeated_level) / 7 * participants).to_i
-    
-    puts "pokemon_fighting"
-    puts @type
-    puts @level
-    puts @experience
-    puts exp_gained
-    puts "end pokemon fighting"
-    
+    @experience += ((wild * owner_check * lucky_egg * base_exp * defeated_level) / 7 * participants).to_i
     self.check_level
-
+    
   end
   
   def check_level
@@ -127,13 +123,13 @@ class Pokemon
     
     case growth
       when 1
-      ((5 * (next_level * next_level * next_level)) / 4.0).to_i
+       ((5 * cubed) / 4.0).to_i
       when 2
-      (next_level * next_level * next_level)
+      cubed
       when 3
-      ((4 * (next_level * next_level * next_level)) / 5.0).to_i
+       ((4 * cubed) / 5.0).to_i
       when 4
-      ((6 / 5.0 * cubed) - (15 * squared) + (100 * next_level) - 140).to_i
+       ((6 / 5.0 * cubed) - (15 * squared) + (100 * next_level) - 140).to_i
     end
   end
   

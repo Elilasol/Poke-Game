@@ -2,67 +2,51 @@
 require 'rubygems' rescue nil
 
 $:<<'src'
-require 'hero'
+require 'trainer'
 require 'pokemon_hash'
 require 'battle'
 require 'curses'
 require 'decision_tree'
+require 'island'
 
-ROUTE_1_HASH = Pokemon_Hash.read("route_1.txt")
-POKEMON_HASH = Pokemon_Hash.read("pokemon.txt")
-TRAINER_HASH = Pokemon_Hash.read("trainers.txt") 
-ROUTE_1_HASH = Pokemon_Hash.read("route_1.txt") 
+POKEMON_HASH = Pokemon_Hash.read("files/etc/pokemon.txt")
+TRAINER_HASH = Pokemon_Hash.read("files/trainers/trainers.txt")
 DECISION_IMPORTANCE = Hash["Heal", 9, "Fight Trainer", 8, "Fight Gym", 7, "Aquiring Pokemon", 6, "EV Training", 5, "Arena Fighting", 4, "Breeding", 3, "Reorganizing Pokemon Team", 2, "Random Battle", 1, "Relaxing", 0 ]
 
   class Game
   	def initialize
 
-	@scr = Curses.init_screen
-	@scr.keypad(true)
-	@scr.refresh
+    kanto = Island.new("Kanto")
+    
+    @trainer_array = kanto.trainers
+    
+  	@scr = Curses.init_screen
+  	@scr.keypad(true)
+	  @scr.refresh
 
-	@runlevel = 1
-	@loopnumber = 1
-
-	#thready = Thread.new do
-	#	loop do
-	#		Kernel.exit if @scr.getch == /q/
-	#	end
-	#end		
-
-  	#game_loop(runlevel, loopnumber)
+  	@runlevel = 1
+	  @loopnumber = 1
 	
-	handle_input(@scr)
+  	handle_input(@scr)
+    
+
 
   	end
   	
   end 
 
   def game_loop(runlevel, loopnumber)
-  
-	hero_file = false
 
 	while @runlevel < 5 do
-		
-		
 
-		if !hero_file
-			hero_array = make_hero_array
-			hero_file = true
-		end
-
-		if @runlevel == 1
-
-		
-		end
-
-		if @runlevel == 2
-			hero_array.each do |i|
-				Decision_Tree.new(i, hero_array)
-			
-			end
-			
-		end
+    if @runlevel == 1
+      if (loopnumber % 5) == 0  
+        @trainer_array.each do |i|
+          Decision_Tree.new(i, @trainer_array)
+        end
+    
+      end
+    end
 
 		puts
 		puts "End of turn number " + loopnumber.to_s
@@ -100,37 +84,37 @@ DECISION_IMPORTANCE = Hash["Heal", 9, "Fight Trainer", 8, "Fight Gym", 7, "Aquir
 					@runlevel = 5
 					puts key.to_s + " is the key pressed"
 					puts "Thread INPUT MONITOR ended"
-				when 's'
+				when '1'
 					puts @loopnumber
 					puts @runlevel
 					puts key.to_s + " is the key pressed"
-					@runlevel = 2
+					@runlevel = 1
+        when '2'
+          puts @loopnumber
+          puts @runlevel
+          puts key.to_s + " is the key pressed"
+          @runlevel = 2
+        when '3'
+          puts @loopnumber
+          puts @runlevel
+          puts key.to_s + " is the key pressed"
+          @runlevel = 3
+        when '4'
+          puts @loopnumber
+          puts @runlevel
+          puts key.to_s + " is the key pressed"
+          @runlevel = 4
 				else
-					@runlevel = 4
 					puts key.to_s + " is the key pressed"
-					puts "Not q or s!"
+					puts "Not q or #1-4!"
 			end
 		end
 			
 		puts @runlevel.to_s + " equals runlevel"
 	end
 
-	game_thread.join #Ensures game thread loses no memory, and 				 #fully ends
+	game_thread.join #Ensures game thread loses no memory, and fully ends
 		
-  end
-
-  def make_hero_array
-	n = 3
-	puts "Adding " + n.to_s + " Heros."
-	puts "\n"
-	hero_array = Array.new
-		n.times do |i|
-			hero_array << @hero = Hero.new
-		end
-
-	bob = Battle.new(hero_array[2], hero_array[1])
-
-	hero_array
   end
 
 

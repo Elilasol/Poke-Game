@@ -2,16 +2,13 @@
 require 'rubygems' rescue nil
 
 $:<<'src'
-require 'trainer'
 require 'pokemon_hash'
-require 'battle'
-require 'curses'
 require 'decision_tree'
 require 'gosu'
+require 'island'
 
 POKEMON_HASH = Pokemon_Hash.read("files/etc/pokemon.txt")
 TRAINER_HASH = Pokemon_Hash.read("files/trainers/trainers.txt")
-ROUTE_1_HASH = Pokemon_Hash.read("files/routes/route_1.txt")
 DECISION_IMPORTANCE = Hash["Heal", 9, "Fight Trainer", 8, "Fight Gym", 7, "Aquiring Pokemon", 6, "EV Training", 5, "Arena Fighting", 4, "Breeding", 3, "Reorganizing Pokemon Team", 2, "Random Battle", 1, "Relaxing", 0 ]
 
 
@@ -32,7 +29,10 @@ class GameWindow < Gosu::Window
 
   def initialize
 	super(640, 480, false)
-	self.caption = "Gosu Tutorial Game"
+	self.caption = "Poke Game"
+  
+  kanto = Island.new("Kanto")
+  
 	@font = Gosu::Font.new(self, Gosu::default_font_name, 20)
 
 	@background_image = Gosu::Image.new(self, "media/kanto_worldmap.png", true)
@@ -40,7 +40,8 @@ class GameWindow < Gosu::Window
 	@player = Player.new(self)
 	@player.warp(320, 240)
 
-	@trainer_array = make_trainer_array
+  @trainer_array = kanto.trainers
+  
 	@second = 1
 
 
@@ -92,7 +93,7 @@ class GameWindow < Gosu::Window
 			output = i.current_action_get.to_s
 			display_messages(output)
 			display_messages(i.pokemon[0].level)
-			
+      
 		end
   	end
 
@@ -131,18 +132,6 @@ class GameWindow < Gosu::Window
 	@message_8 = @message_9
 	@message_9 = @message_10
 	@message_10 = message
-  end
-
-  def make_trainer_array
-	n = 1000
-	display_messages("Adding " + n.to_s + " trainers.")
-
-	trainer_array = Array.new
-		n.times do |i|
-			trainer_array << @trainer = Trainer.new
-		end
-
-	trainer_array
   end
 
 end

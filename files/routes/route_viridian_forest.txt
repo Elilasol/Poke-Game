@@ -1,0 +1,25 @@
+#---
+NAME: Caterpie
+RATE: 21
+MIN: 3
+MAX: 5
+---
+NAME: Kakuna
+RATE: 21
+MIN: 4
+MAX: 6
+---
+NAME: Metapod
+RATE: 21
+MIN: 4
+MAX: 6
+---
+NAME: Pikachu
+RATE: 5
+MIN: 3
+MAX: 5
+---
+NAME: Weedle
+RATE: 22
+MIN: 3
+MAX: 5

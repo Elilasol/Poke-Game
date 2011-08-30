@@ -1,0 +1,20 @@
+#---
+NAME: Geodude
+RATE: 26
+MIN: 16
+MAX: 18
+---
+NAME: Machop
+RATE: 15
+MIN: 15
+MAX: 17
+---
+NAME: Onix
+RATE: 9
+MIN: 13
+MAX: 17
+---
+NAME: Zubat
+RATE: 50
+MIN: 16
+MAX: 18

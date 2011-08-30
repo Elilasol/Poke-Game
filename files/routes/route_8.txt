@@ -1,0 +1,35 @@
+#---
+NAME: Ekans
+RATE: 10
+MIN: 17
+MAX: 19
+---
+NAME: Growlithe
+RATE: 10
+MIN: 15
+MAX: 18
+---
+NAME: Mankey
+RATE: 15
+MIN: 18
+MAX: 20
+---
+NAME: Meowth
+RATE: 15
+MIN: 18
+MAX: 20
+---
+NAME: Pidgey
+RATE: 30
+MIN: 18
+MAX: 20
+---
+NAME: Sandshrew
+RATE: 10
+MIN: 17
+MAX: 19
+---
+NAME: Vulpix
+RATE: 10
+MIN: 15
+MAX: 18

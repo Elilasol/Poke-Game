@@ -1,0 +1,10 @@
+#---
+NAME: Diglett
+RATE: 95
+MIN: 15
+MAX: 22
+---
+NAME: Dugtrio
+RATE: 5
+MIN: 29
+MAX: 31

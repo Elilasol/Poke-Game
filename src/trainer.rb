@@ -6,10 +6,10 @@ require 'pokemon'
 
 class Trainer
   
-  def initialize
+  def initialize(island)
     
-    #4 is 50%, don't ask me, ask veekun.
-    @sex = random_sex(50) 
+    @sex = random_sex(50)
+    @island = island
     
     @name = random_name("@sex")
     @risky = random_personality_trait(4, 25)
@@ -53,6 +53,7 @@ class Trainer
   end
   
   def stat
+    
     puts "#{@name}"
     puts "Risky level = #{@risky}"
     puts "Intelligence level = #{@int}"
@@ -61,12 +62,20 @@ class Trainer
     puts "#{@decision}"
   end
   
+  def island
+    @island
+  end
+  
   def pokemon
     @pokemon
   end
   
   def sex
     @sex
+  end
+  
+  def badges
+    @badges
   end
   
   def current_action_set(message)
@@ -81,8 +90,9 @@ class Trainer
     @name.chomp(" ")
   end
   
-  def risky
-    @risky
+  def risk_mod
+    risky = @risky - 50
+    (1 + (risky / 100.0))
   end
   
   def int

@@ -1,0 +1,15 @@
+#---
+NAME: Pidgey
+RATE: 45
+MIN: 6
+MAX: 8
+---
+NAME: Spearow
+RATE: 45
+MIN: 5
+MAX: 8
+---
+NAME: Jigglypuff
+RATE: 10
+MIN: 3
+MAX: 7

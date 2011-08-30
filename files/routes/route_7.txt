@@ -1,0 +1,35 @@
+#---
+NAME: Bellsprout
+RATE: 15
+MIN: 19
+MAX: 22
+---
+NAME: Growlithe
+RATE: 10
+MIN: 18
+MAX: 20
+---
+NAME: Mankey
+RATE: 15
+MIN: 17
+MAX: 20
+---
+NAME: Meowth
+RATE: 15
+MIN: 17
+MAX: 20
+---
+NAME: Oddish
+RATE: 15
+MIN: 19
+MAX: 22
+---
+NAME: Pidgey
+RATE: 20
+MIN: 19
+MAX: 22
+---
+NAME: Vulpix
+RATE: 10
+MIN: 18
+MAX: 20

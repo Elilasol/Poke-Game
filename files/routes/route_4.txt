@@ -1,0 +1,20 @@
+#---
+NAME: Ekans
+RATE: 15
+MIN: 6
+MAX: 12
+---
+NAME: Rattata
+RATE: 35
+MIN: 8
+MAX: 12
+---
+NAME: Sandshrew
+RATE: 15
+MIN: 6
+MAX: 12
+---
+NAME: Spearow
+RATE: 35
+MIN: 8
+MAX: 12

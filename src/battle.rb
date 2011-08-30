@@ -1,7 +1,7 @@
 class Battle
   
   def initialize(trainer_one, trainer_two)
-    #puts trainer_one.name.chomp(" ") + " battles " + trainer_two.name.chomp(" ")
+    @island = trainer_one.island
     @attack = {"Tackle" => "Attack", "Power" => 35, "Accuracy" => 95, "Type" => "Normal"}
     battle(trainer_one, trainer_two)
   end
@@ -9,12 +9,11 @@ class Battle
   def battle(trainer_one, trainer_two)
     
     trainer_one_poke = trainer_one.pokemon[0]
-    trainer_two_poke = trainer_two.pokemon[0]
-    
-    trainer_two = "Wild Pokemon"
     
     if trainer_two == "Wild Pokemon"
       trainer_two_poke = create_random_poke(random_wild_poke(route_decider(trainer_one)))
+    else
+      trainer_two_poke = trainer_two.pokemon[0]
     end
     
     dead = false
@@ -33,7 +32,7 @@ class Battle
         second_trainer = trainer_one
       end
       
-
+      
       
       use_attack(first, second, "Tackle")
       
@@ -59,7 +58,6 @@ class Battle
     #attack_type = @attack["Type"]
     
     attack_name = attack_name
-    
     
     sametype = 1.5
     weakness = 1
@@ -90,8 +88,19 @@ class Battle
   end
   
   def route_decider(trainer)
-    #trainer.pokemon[0].level will decide this, but for now, only route one is made.
-    1
+    #trainer.pokemon[0].level will decide this, but for now, only route 1-3 and viridian are made.
+    
+    max_fight = trainer.pokemon[0].level
+    max_fight *= trainer.risk_mod
+    
+    route_choice = @island.route("route_1")
+
+    @island.routes.each do |route|
+      if (route.maxlevel <= max_fight) && (route_choice.maxlevel <= route.maxlevel)
+        route_choice = route
+      end
+    end
+    route_choice
   end
   
   def random_wild_poke(route)
@@ -99,12 +108,7 @@ class Battle
     pokemon_hash = {}
     random_poke_returned = Array.new
     
-    case route
-      when 1
-      hash = ::ROUTE_1_HASH
-    else
-      puts "ERROR, NO ROUTE CHOSEN"
-    end
+    hash = route.pokemon
     
     hash.each {|p| pokemon_hash[p[0]] = p[1]["RATE"]}
     
@@ -116,24 +120,32 @@ class Battle
     # the name of the pokemon that wins
     random_poke_returned << pokemon_hash.each.find {|poke| (random_value -= poke[1]) <=0}[0]
     
-    min = ::ROUTE_1_HASH[random_poke_returned[0]]["MIN"]
-    max = ::ROUTE_1_HASH[random_poke_returned[0]]["MAX"]
+    min = hash[random_poke_returned[0]]["MIN"]
+    max = hash[random_poke_returned[0]]["MAX"]
     
     random_poke_returned << random_between(min, max)
   end
   
   def create_random_poke(poke_array)
-    #pokemon_hash = Hash[ "POKEMON" => poke_array[0], "SEX" => random_sex(::POKEMON_HASH[poke_array[0]]["GENDER"]), "LEVEL" => poke_array[1], "EXP" => 0, "CURRENT_HP" => 1, "HP_IV" => rand(32), "ATK_IV" => rand(32), "DEF_IV" => rand(32), "SPATK_IV" => rand(32), "SPDEF_IV" => rand(32), "SPEED_IV" => rand(32), "HP_EV" => 0, "ATK_EV" => 0, "DEF_EV" => 0, "SPATK_EV" => 0, "SPDEF_EV" => 0, "SPEED_EV" => 0 ]
     Pokemon.new(poke_array[0], poke_array[1], "WILD")
   end
   
   def random_between(min, max)
-    min + rand(max + 1 - min)
+    min + rand(max + 1 - min).to_i
   end
   
   def winner(winner, loser, trainer)
     if winner.level < 100
       winner.exp_gain(loser, trainer)
+      case winner.name
+        when "Bulbasaur"
+        when "Charmander"
+        when "Squirtle"
+      else    
+        puts winner.name + " level " + winner.level.to_s + " defeated " + loser.name + " level " + loser.level.to_s
+        puts loser.owner.risk_mod
+        puts loser.ivs
+      end
     end
   end
   

@@ -1,0 +1,20 @@
+#---
+NAME: Clefairy
+RATE: 1
+MIN: 8
+MAX: 8
+---
+NAME: Geodude
+RATE: 15
+MIN: 8
+MAX: 10
+---
+NAME: Paras
+RATE: 5
+MIN: 8
+MAX: 8
+---
+NAME: Zubat
+RATE: 79
+MIN: 6
+MAX: 11

@@ -1,0 +1,40 @@
+#---
+NAME: Abra
+RATE: 15
+MIN: 10
+MAX: 12
+---
+NAME: Bellsprout
+RATE: 15
+MIN: 12
+MAX: 14
+---
+NAME: Caterpie
+RATE: 10
+MIN: 8
+MAX: 8
+---
+NAME: Kakuna
+RATE: 10
+MIN: 9
+MAX: 9
+---
+NAME: Metapod
+RATE: 10
+MIN: 9
+MAX: 9
+---
+NAME: Oddish
+RATE: 15
+MIN: 12
+MAX: 14
+---
+NAME: Pidgey
+RATE: 15
+MIN: 13
+MAX: 13
+---
+NAME: Weedle
+RATE: 10
+MIN: 8
+MAX: 8

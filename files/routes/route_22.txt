@@ -1,0 +1,20 @@
+#---
+NAME: Nidoran\\u2640
+RATE: 20
+MIN: 3
+MAX: 4
+---
+NAME: Nidoran\\u2642
+RATE: 20
+MIN: 3
+MAX: 4
+---
+NAME: Rattata
+RATE: 45
+MIN: 2
+MAX: 4
+---
+NAME: Spearow
+RATE: 15
+MIN: 3
+MAX: 5

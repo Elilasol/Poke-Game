@@ -1,0 +1,20 @@
+#---
+NAME: Rattata
+RATE: 35
+MIN: 2
+MAX: 5
+---
+NAME: Pidgey
+RATE: 35
+MIN: 3
+MAX: 5
+---
+NAME: Weedle
+RATE: 15
+MIN: 3
+MAX: 5
+---
+NAME: Caterpie
+RATE: 15
+MIN: 3
+MAX: 5

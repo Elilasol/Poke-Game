@@ -1,0 +1,15 @@
+#---
+NAME: Cubone
+RATE: 10
+MIN: 22
+MAX: 24
+---
+NAME: Gastly
+RATE: 75
+MIN: 20
+MAX: 24
+---
+NAME: Haunter
+RATE: 15
+MIN: 28
+MAX: 30
