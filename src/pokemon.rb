@@ -105,15 +105,50 @@ class Pokemon
     participants = 1
     
     @experience += ((wild * owner_check * lucky_egg * base_exp * defeated_level) / 7 * participants).to_i
-    self.check_level
     
+    self.check_level    
   end
   
   def check_level
     if @experience > exp_to(self.level + 1)
       @level += 1
+      self.check_evolve
     end
   end
+  
+  def check_evolve
+    evolve_trig = @@base_stats[@type]["EVOL_TRIG"]
+    
+    case evolve_trig
+      when 1
+      #level evolution
+      evol_level = @@base_stats[@type]["EVOL_LEVEL"]
+      evol_to = find_by_id(@@base_stats[@type]["EVOL_TO"])
+      
+      if @level == evol_level
+        puts @type.to_s + " evolves to " + evol_to
+        if @owner != "WILD"
+          puts @owner.risk_mod
+        end
+        @type = evol_to
+      end
+      when 2
+      #trade
+      when 3
+      #use item on poke
+    end
+  end
+  
+  def find_by_id(poke_id)
+    name = ""
+    @@base_stats.each do |i|
+      if i[1]["DEX"] == poke_id
+        name = i[0]
+      end
+    end
+    name
+  end
+  
   
   def exp_to(level)
     growth = @@base_stats[@type]["GROWTH"]

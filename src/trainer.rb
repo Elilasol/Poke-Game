@@ -10,6 +10,7 @@ class Trainer
     
     @sex = random_sex(50)
     @island = island
+    @route = "route_1"
     
     @name = random_name("@sex")
     @risky = random_personality_trait(4, 25)

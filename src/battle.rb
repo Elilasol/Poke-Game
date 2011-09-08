@@ -55,12 +55,25 @@ class Battle
   def use_attack(attacking_poke, defending_poke, attack_name)
     attack_power = @attack["Power"]
     attack_accuracy = @attack["Accuracy"]
-    #attack_type = @attack["Type"]
+    if attacking_poke.owner == "WILD"
+      attack_accuracy *= 0.5
+    end
+    
+    attack_type_1 = ::POKEMON_HASH[attacking_poke.name]["TYPE1"]
+    attack_type_2 = ::POKEMON_HASH[attacking_poke.name]["TYPE2"]
     
     attack_name = attack_name
     
     sametype = 1.5
-    weakness = 1
+    weakness_vs_1 = weakness_check(attack_type_1, defending_poke)
+    weakness = weakness_vs_1
+    
+    if attack_type_2 != nil
+      weakness_vs_2 = weakness_check(attack_type_2, defending_poke)
+      if weakness_vs_2 > weakness_vs_1
+        weakness = weakness_vs_2
+      end
+    end
     
     level = attacking_poke.level
     
@@ -81,6 +94,8 @@ class Battle
     
     random_flux = (((rand(15) + 1) + 85) / 100.0)
     
+    damage = 0
+    
     if (rand(100) < attack_accuracy)
       damage = (((((2 * level / 5 + 2) * attack * attack_power / defense) / 50) + 2) * sametype * weakness * random_flux).to_i
       defending_poke.damage(damage)
@@ -94,13 +109,25 @@ class Battle
     max_fight *= trainer.risk_mod
     
     route_choice = @island.route("route_1")
-
+    
     @island.routes.each do |route|
       if (route.maxlevel <= max_fight) && (route_choice.maxlevel <= route.maxlevel)
         route_choice = route
       end
     end
     route_choice
+  end
+  
+  def weakness_check(type, enemy)
+    weakness_one = ::TYPE_HASH[type][::POKEMON_HASH[enemy.name]["TYPE1"]]
+    weakness_two = ::TYPE_HASH[type][::POKEMON_HASH[enemy.name]["TYPE2"]]
+    
+    if weakness_two != nil
+     (weakness_one / 100.0) * (weakness_two / 100.0)
+    else
+      weakness_one / 100.0
+    end
+    
   end
   
   def random_wild_poke(route)
@@ -141,10 +168,14 @@ class Battle
         when "Bulbasaur"
         when "Charmander"
         when "Squirtle"
-      else    
+        when "Ivysaur"
+        when "Venusaur"
+        when "Charmeleon"
+        when "Charizard"
+        when "Wartortle"
+        when "Blastoise"
+      else
         puts winner.name + " level " + winner.level.to_s + " defeated " + loser.name + " level " + loser.level.to_s
-        puts loser.owner.risk_mod
-        puts loser.ivs
       end
     end
   end

@@ -7,6 +7,7 @@ class Route
     @name = ""
     @minlevel = 100
     @maxlevel = 0
+    @size = 0
     @pokemon = Hash.new
     
     load_data(file)

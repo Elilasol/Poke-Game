@@ -31,6 +31,8 @@ class Pokemon_Hash
         ret[t['NAME']] = t
         when "files/trainers/trainers.txt"
         ret[t['GYM']] = t
+        when "files/etc/types.txt"
+        ret[t['TYPE']] = t
       else
         ret[t['NAME']] = t
       end
