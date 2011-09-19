@@ -1,8 +1,10 @@
 require 'pokemon_hash'
 require 'route'
 require 'trainer'
+require 'decision_tree'
 
 class Island
+  attr_accessor :name, :trainers, :routes, :roadblocks
   
   def initialize(name)
     
@@ -32,7 +34,7 @@ class Island
   
   def load_trainers
     
-    n = 1000
+    n = 3
     
     trainer_array = Array.new
     n.times do |i|
@@ -48,28 +50,12 @@ class Island
     end
   end
   
-  def trainers
-    @trainers
-  end
-  
-  def routes
-    @routes
-  end
-  
   def route(route_name)
     @routes.each do |route|
       if route.name == route_name
         return route
       end
     end
-  end
-  
-  def name
-    @name
-  end
-  
-  def roadblocks
-    @roadblocks
   end
   
 end

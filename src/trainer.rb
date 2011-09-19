@@ -5,6 +5,8 @@ require 'name_generator'
 require 'pokemon'
 
 class Trainer
+  attr_accessor :sex, :island, :route, :name, :int, :pokemon,
+  :badges, :current_action, :decision
   
   def initialize(island)
     
@@ -63,28 +65,8 @@ class Trainer
     puts "#{@decision}"
   end
   
-  def island
-    @island
-  end
-  
-  def pokemon
-    @pokemon
-  end
-  
-  def sex
-    @sex
-  end
-  
-  def badges
-    @badges
-  end
-  
   def current_action_set(message)
     @current_action = message
-  end
-  
-  def current_action_get
-    @current_action
   end
   
   def name
@@ -94,14 +76,6 @@ class Trainer
   def risk_mod
     risky = @risky - 50
     (1 + (risky / 100.0))
-  end
-  
-  def int
-    @int
-  end
-  
-  def decision
-    @decision
   end
   
 end

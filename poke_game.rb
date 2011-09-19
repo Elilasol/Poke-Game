@@ -6,7 +6,6 @@ require 'trainer'
 require 'pokemon_hash'
 require 'battle'
 require 'curses'
-require 'decision_tree'
 require 'island'
 
 POKEMON_HASH = Pokemon_Hash.read("files/etc/pokemon.txt")
@@ -38,7 +37,6 @@ DECISION_IMPORTANCE = Hash["Heal", 9, "Fight Trainer", 8, "Fight Gym", 7, "Aquir
     if @runlevel == 1
       if (loopnumber % 5) == 0  
         @kanto.pulse
-    
       end
     end
 

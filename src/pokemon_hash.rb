@@ -38,7 +38,6 @@ class Pokemon_Hash
       end
     end
     
-    
     file.close
     
     return ret
