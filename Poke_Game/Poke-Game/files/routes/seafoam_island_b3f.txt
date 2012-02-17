@@ -1,0 +1,50 @@
+#---
+NAME: Dewgong
+RATE: 1
+MIN: 37
+MAX: 37
+---
+NAME: Horsea
+RATE: 15
+MIN: 29
+MAX: 31
+---
+NAME: Kingler
+RATE: 4
+MIN: 39
+MAX: 39
+---
+NAME: Krabby
+RATE: 15
+MIN: 29
+MAX: 31
+---
+NAME: Psyduck
+RATE: 35
+MIN: 31
+MAX: 33
+---
+NAME: Seadra
+RATE: 4
+MIN: 39
+MAX: 39
+---
+NAME: Seel
+RATE: 30
+MIN: 31
+MAX: 33
+---
+NAME: Shellder
+RATE: 15
+MIN: 29
+MAX: 31
+---
+NAME: Slowpoke
+RATE: 35
+MIN: 31
+MAX: 33
+---
+NAME: Staryu
+RATE: 15
+MIN: 29
+MAX: 31

@@ -1,0 +1,45 @@
+#---
+NAME: Arbok
+RATE: 5
+MIN: 57
+MAX: 57
+---
+NAME: Chansey
+RATE: 10
+MIN: 64
+MAX: 64
+---
+NAME: Ditto
+RATE: 10
+MIN: 63
+MAX: 67
+---
+NAME: Electrode
+RATE: 15
+MIN: 55
+MAX: 55
+---
+NAME: Marowak
+RATE: 20
+MIN: 55
+MAX: 55
+---
+NAME: Parasect
+RATE: 10
+MIN: 64
+MAX: 64
+---
+NAME: Raichu
+RATE: 10
+MIN: 64
+MAX: 64
+---
+NAME: Rhydon
+RATE: 20
+MIN: 55
+MAX: 55
+---
+NAME: Sandslash
+RATE: 5
+MIN: 57
+MAX: 57

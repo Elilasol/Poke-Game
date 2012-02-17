@@ -1,0 +1,55 @@
+#---
+NAME: Arbok
+RATE: 10
+MIN: 52
+MAX: 52
+---
+NAME: Ditto
+RATE: 1
+MIN: 53
+MAX: 53
+---
+NAME: Dodrio
+RATE: 10
+MIN: 49
+MAX: 49
+---
+NAME: Golbat
+RATE: 20
+MIN: 46
+MAX: 46
+---
+NAME: Hypno
+RATE: 20
+MIN: 46
+MAX: 46
+---
+NAME: Kadabra
+RATE: 5
+MIN: 49
+MAX: 49
+---
+NAME: Magneton
+RATE: 15
+MIN: 46
+MAX: 46
+---
+NAME: Parasect
+RATE: 5
+MIN: 52
+MAX: 52
+---
+NAME: Raichu
+RATE: 4
+MIN: 53
+MAX: 53
+---
+NAME: Sandslash
+RATE: 10
+MIN: 52
+MAX: 52
+---
+NAME: Venomoth
+RATE: 10
+MIN: 49
+MAX: 49

@@ -1,0 +1,5 @@
+#---
+NAME: Tentacool
+RATE: 100
+MIN: 5
+MAX: 40

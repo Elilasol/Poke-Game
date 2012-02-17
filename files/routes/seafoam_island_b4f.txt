@@ -1,0 +1,50 @@
+#---
+NAME: Golbat
+RATE: 1
+MIN: 32
+MAX: 32
+---
+NAME: Golduck
+RATE: 4
+MIN: 39
+MAX: 39
+---
+NAME: Horsea
+RATE: 35
+MIN: 31
+MAX: 33
+---
+NAME: Krabby
+RATE: 35
+MIN: 31
+MAX: 33
+---
+NAME: Psyduck
+RATE: 15
+MIN: 29
+MAX: 31
+---
+NAME: Seel
+RATE: 15
+MIN: 29
+MAX: 31
+---
+NAME: Shellder
+RATE: 30
+MIN: 31
+MAX: 33
+---
+NAME: Slowbro
+RATE: 4
+MIN: 39
+MAX: 39
+---
+NAME: Slowpoke
+RATE: 15
+MIN: 29
+MAX: 31
+---
+NAME: Staryu
+RATE: 30
+MIN: 31
+MAX: 33

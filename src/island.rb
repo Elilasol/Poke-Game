@@ -34,7 +34,7 @@ class Island
   
   def load_trainers
     
-    n = 3
+    n = 1000
     
     trainer_array = Array.new
     n.times do |i|

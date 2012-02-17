@@ -1,0 +1,20 @@
+#---
+NAME: Doduo
+RATE: 25
+MIN: 18
+MAX: 22
+---
+NAME: Raticate
+RATE: 5
+MIN: 23
+MAX: 25
+---
+NAME: Rattata
+RATE: 30
+MIN: 18
+MAX: 22
+---
+NAME: Spearow
+RATE: 40
+MIN: 20
+MAX: 22

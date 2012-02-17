@@ -1,0 +1,30 @@
+#---
+NAME: Electabuzz
+RATE: 5
+MIN: 24
+MAX: 28
+---
+NAME: Magnemite
+RATE: 30
+MIN: 25
+MAX: 27
+---
+NAME: Magneton
+RATE: 10
+MIN: 25
+MAX: 29
+---
+NAME: Pikachu
+RATE: 25
+MIN: 20
+MAX: 22
+---
+NAME: Raichu
+RATE: 5
+MIN: 20
+MAX: 22
+---
+NAME: Voltorb
+RATE: 25
+MIN: 20
+MAX: 22

@@ -1,0 +1,35 @@
+#---
+NAME: Arbok
+RATE: 5
+MIN: 41
+MAX: 41
+---
+NAME: Ditto
+RATE: 35
+MIN: 33
+MAX: 43
+---
+NAME: Ekans
+RATE: 20
+MIN: 26
+MAX: 26
+---
+NAME: Fearow
+RATE: 25
+MIN: 38
+MAX: 43
+---
+NAME: Sandshrew
+RATE: 20
+MIN: 26
+MAX: 26
+---
+NAME: Sandslash
+RATE: 5
+MIN: 41
+MAX: 41
+---
+NAME: Spearow
+RATE: 15
+MIN: 26
+MAX: 26

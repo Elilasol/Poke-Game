@@ -1,0 +1,35 @@
+#---
+NAME: Bellsprout
+RATE: 20
+MIN: 22
+MAX: 26
+---
+NAME: Ditto
+RATE: 5
+MIN: 25
+MAX: 25
+---
+NAME: Gloom
+RATE: 5
+MIN: 28
+MAX: 30
+---
+NAME: Oddish
+RATE: 20
+MIN: 22
+MAX: 26
+---
+NAME: Pidgey
+RATE: 25
+MIN: 25
+MAX: 27
+---
+NAME: Venonat
+RATE: 20
+MIN: 24
+MAX: 26
+---
+NAME: Weepinbell
+RATE: 5
+MIN: 28
+MAX: 30

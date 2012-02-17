@@ -1,0 +1,45 @@
+#---
+NAME: Chansey
+RATE: 5
+MIN: 56
+MAX: 56
+---
+NAME: Ditto
+RATE: 5
+MIN: 55
+MAX: 60
+---
+NAME: Dodrio
+RATE: 20
+MIN: 51
+MAX: 51
+---
+NAME: Electrode
+RATE: 10
+MIN: 52
+MAX: 52
+---
+NAME: Kadabra
+RATE: 15
+MIN: 51
+MAX: 51
+---
+NAME: Marowak
+RATE: 10
+MIN: 52
+MAX: 52
+---
+NAME: Rhydon
+RATE: 10
+MIN: 52
+MAX: 52
+---
+NAME: Venomoth
+RATE: 20
+MIN: 51
+MAX: 51
+---
+NAME: Wigglytuff
+RATE: 5
+MIN: 54
+MAX: 54

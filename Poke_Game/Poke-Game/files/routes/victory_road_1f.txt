@@ -1,0 +1,40 @@
+#---
+NAME: Geodude
+RATE: 20
+MIN: 26
+MAX: 26
+---
+NAME: Golbat
+RATE: 5
+MIN: 41
+MAX: 41
+---
+NAME: Graveler
+RATE: 5
+MIN: 41
+MAX: 41
+---
+NAME: Machoke
+RATE: 4
+MIN: 42
+MAX: 42
+---
+NAME: Machop
+RATE: 20
+MIN: 24
+MAX: 24
+---
+NAME: Marowak
+RATE: 1
+MIN: 43
+MAX: 43
+---
+NAME: Onix
+RATE: 30
+MIN: 36
+MAX: 42
+---
+NAME: Zubat
+RATE: 15
+MIN: 22
+MAX: 22
