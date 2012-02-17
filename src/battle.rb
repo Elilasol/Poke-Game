@@ -1,6 +1,10 @@
 class Battle
   
   def initialize(trainer_one, trainer_two)
+    @pokemon = Environment::POKEMON_HASH
+    @types = Environment::TYPE_HASH
+    @window = Environment::WINDOW
+
     @island = trainer_one.island
     @attack = {"Tackle" => "Attack", "Power" => 35, "Accuracy" => 95, "Type" => "Normal"}
     battle(trainer_one, trainer_two)
@@ -59,8 +63,8 @@ class Battle
       attack_accuracy *= 0.5
     end
     
-    attack_type_1 = ::POKEMON_HASH[attacking_poke.name]["TYPE1"]
-    attack_type_2 = ::POKEMON_HASH[attacking_poke.name]["TYPE2"]
+    attack_type_1 = @pokemon[attacking_poke.name]["TYPE1"]
+    attack_type_2 = @pokemon[attacking_poke.name]["TYPE2"]
     
     attack_name = attack_name
     
@@ -119,8 +123,8 @@ class Battle
   end
   
   def weakness_check(type, enemy)
-    weakness_one = ::TYPE_HASH[type][::POKEMON_HASH[enemy.name]["TYPE1"]]
-    weakness_two = ::TYPE_HASH[type][::POKEMON_HASH[enemy.name]["TYPE2"]]
+    weakness_one = @types[type][@pokemon[enemy.name]["TYPE1"]]
+    weakness_two = @types[type][@pokemon[enemy.name]["TYPE2"]]
     
     if weakness_two != nil
      (weakness_one / 100.0) * (weakness_two / 100.0)
@@ -175,7 +179,9 @@ class Battle
         when "Wartortle"
         when "Blastoise"
       else
-        puts winner.name + " level " + winner.level.to_s + " defeated " + loser.name + " level " + loser.level.to_s
+        @message = winner.name + " level " + winner.level.to_s + " defeated " + loser.name + " level " + loser.level.to_s
+        puts @message
+        @window.message_array << @message
       end
     end
   end

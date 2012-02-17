@@ -36,7 +36,7 @@ class Pokemon
     
     # class variables / methods
     
-    @@base_stats = ::POKEMON_HASH
+    @@base_stats = Environment::POKEMON_HASH
     
     # raise an error if this is an invalid pokemon type
     raise unless @@base_stats[type]

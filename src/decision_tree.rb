@@ -3,6 +3,9 @@ require 'battle'
 class Decision_Tree
   
   def initialize(trainer, trainer_array)
+    @decisions = Environment::DECISION_IMPORTANCE
+    
+    
     @trainers = trainer_array
     
     decide(trainer)
@@ -85,7 +88,7 @@ class Decision_Tree
     dilemma_decision = decision_levels.keys[0]
     
     1.upto(decision_levels.length) do |i|
-      if ::DECISION_IMPORTANCE[decision_levels.keys[i].to_s].to_i > ::DECISION_IMPORTANCE[dilemma_decision.to_s].to_i
+      if @decisions[decision_levels.keys[i].to_s].to_i > @decisions[dilemma_decision.to_s].to_i
         dilemma_decision = decision_levels.keys[i]
       end
     end
