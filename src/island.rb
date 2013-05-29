@@ -4,14 +4,19 @@ require 'trainer'
 require 'decision_tree'
 
 class Island
-  attr_accessor :name, :trainers, :routes, :roadblocks
+  attr_accessor :name, :trainers, :routes, :roadblocks, :average_level, :top_iv, :average_iv,
+  :top_iv_trainer
   
   def initialize(name)
     
     fileroute = "files/routes/*.*"
     
     @name = name
+    @top_iv = 0
+    @average_iv = 0
     @trainers = load_trainers
+    @top_iv_trainer = @trainers.first
+    @average_level = 5
     @routes = Array.new
     load_routes(fileroute)
     @roadblocks = load_blockades
@@ -45,9 +50,26 @@ class Island
   end
   
   def pulse
+    num_trainers = @trainers.size
+    total_level = 0
+    total_iv = 0
+    top_iv = 0
+    top_iv_trainer = nil
+
     @trainers.each do |i|
       Decision_Tree.new(i, @trainer_array)
+      total_level += i.average_level
+      total_iv += i.average_iv
+      if top_iv < i.top_iv
+        top_iv = i.top_iv
+        top_iv_trainer = i
+      end
     end
+
+    @average_level = (total_level / num_trainers).to_f
+    @average_iv = (total_iv / num_trainers).to_f
+    @top_iv = top_iv
+    @top_iv_trainer = top_iv_trainer
   end
   
   def route(route_name)

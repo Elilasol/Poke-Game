@@ -6,13 +6,17 @@ require 'pokemon'
 
 class Trainer
   attr_accessor :sex, :island, :route, :name, :int, :pokemon,
-  :badges, :current_action, :decision
+  :badges, :current_action, :decision, :average_level, :average_iv,
+  :top_iv
   
   def initialize(island)
     
     @sex = random_sex(50)
     @island = island
     @route = "route_1"
+    @average_level = 5
+    @average_iv = 0
+    @top_iv = 0
     
     @name = random_name("@sex")
     @risky = random_personality_trait(4, 25)
@@ -26,6 +30,24 @@ class Trainer
   
   def random_sex(female_chance)
     rand(100) < female_chance ? "Female" : "Male"
+  end
+
+  def calculate_averages
+    total_level = 0
+    average_iv = 0
+    top_iv = 0
+    
+    @pokemon.each do |pokemon|
+      total_level += pokemon.level
+      average_iv += pokemon.average_iv
+      if top_iv < pokemon.average_iv
+        top_iv = pokemon.average_iv
+      end
+    end
+    
+    @average_level = (total_level / pokemon.size).to_f
+    @average_iv = (average_iv / pokemon.size).to_f
+    @top_iv = top_iv
   end
   
   def catch_initial_pokemon(owner)
@@ -61,7 +83,7 @@ class Trainer
     puts "Risky level = #{@risky}"
     puts "Intelligence level = #{@int}"
     puts "#{@sex}"
-    puts "#{@pokemon}"
+    puts "#{@pokemon.first.name}"
     puts "#{@decision}"
   end
   

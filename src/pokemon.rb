@@ -1,4 +1,47 @@
 class Pokemon
+  attr_accessor :average_iv
+
+  def initialize(type, level, owner)
+    
+    # class variables / methods
+    
+    @@base_stats = Environment::POKEMON_HASH
+    
+    # raise an error if this is an invalid pokemon type
+    raise unless @@base_stats[type]
+    
+    @type = type
+    @owner = owner
+    @sex = Pokemon.random_sex(@@base_stats[type]["GENDER"])
+    @level = level
+    @experience = exp_to(level)
+    @damage = 0
+    @ivs = { :hp => rand(32),
+             :atk => rand(32),
+             :def => rand(32),
+             :spatk => rand(32),
+             :spdef => rand(32),
+             :speed => rand(32) }
+    @average_iv = calculate_average_iv
+    @evs = { :hp => 0,
+             :atk => 0,
+             :def => 0,
+             :spatk => 0,
+             :spdef => 0,
+             :speed => 0 }
+  end
+
+  def calculate_average_iv
+    total_iv = 0
+    
+    if self.owner != "WILD"
+      @ivs.each do |type, iv|
+        total_iv += iv 
+      end
+      
+      @average_iv = (total_iv.to_f / 6).round(2)
+    end
+  end
   
   def self.random_sex(chance)
     case chance
@@ -31,35 +74,6 @@ class Pokemon
   end
   
   # instance methods
-  
-  def initialize(type, level, owner)
-    
-    # class variables / methods
-    
-    @@base_stats = Environment::POKEMON_HASH
-    
-    # raise an error if this is an invalid pokemon type
-    raise unless @@base_stats[type]
-    
-    @type = type
-    @owner = owner
-    @sex = Pokemon.random_sex(@@base_stats[type]["GENDER"])
-    @level = level
-    @experience = exp_to(level)
-    @damage = 0
-    @ivs = { :hp => rand(32),
-             :atk => rand(32),
-             :def => rand(32),
-             :spatk => rand(32),
-             :spdef => rand(32),
-             :speed => rand(32) }
-    @evs = { :hp => 0,
-             :atk => 0,
-             :def => 0,
-             :spatk => 0,
-             :spdef => 0,
-             :speed => 0 }
-  end
   
   def max_hp
    (((@ivs[:hp] + gtype["HP"] + @evs[:hp] + 50) * @level) / 50) + 10
@@ -106,13 +120,16 @@ class Pokemon
     
     @experience += ((wild * owner_check * lucky_egg * base_exp * defeated_level) / 7 * participants).to_i
     
-    self.check_level    
+    if self.owner != "WILD"
+      self.check_level    
+    end
   end
   
   def check_level
     if @experience > exp_to(self.level + 1)
       @level += 1
       self.check_evolve
+      @owner.calculate_averages
     end
   end
   

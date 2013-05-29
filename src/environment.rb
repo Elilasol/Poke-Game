@@ -12,6 +12,7 @@ module Environment
   TYPE_HASH = Pokemon_Hash.read("files/etc/types.txt")
 
   #For making decisions when both are wanted by the trainer.
+  ## Future plans? ["My pokemon are hurt!", "I want to get stronger!", "I want to rest.", "I keep losing!"]
   DECISION_IMPORTANCE = Hash["Heal", 9, "Fight Trainer", 8, "Fight Gym", 7, "Aquiring Pokemon", 6, "EV Training", 5, "Arena Fighting", 4, "Breeding", 3, "Reorganizing Pokemon Team", 2, "Random Battle", 1, "Relaxing", 0 ]  
 
   #Main window
