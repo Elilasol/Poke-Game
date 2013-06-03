@@ -1,33 +1,33 @@
 #---
 NAME: Geodude
 RATE: 20
-MIN: 24
-MAX: 24
+MIN: 26
+MAX: 26
 ---
 NAME: Golbat
-RATE: 5
-MIN: 40
-MAX: 40
----
-NAME: Graveler
-RATE: 1
-MIN: 43
-MAX: 43
----
-NAME: Machoke
 RATE: 5
 MIN: 41
 MAX: 41
 ---
+NAME: Graveler
+RATE: 5
+MIN: 41
+MAX: 41
+---
+NAME: Machoke
+RATE: 4
+MIN: 42
+MAX: 42
+---
 NAME: Machop
 RATE: 20
-MIN: 22
-MAX: 22
+MIN: 24
+MAX: 24
 ---
 NAME: Marowak
-RATE: 4
-MIN: 40
-MAX: 40
+RATE: 1
+MIN: 43
+MAX: 43
 ---
 NAME: Onix
 RATE: 30
@@ -36,14 +36,14 @@ MAX: 42
 ---
 NAME: Zubat
 RATE: 15
-MIN: 26
-MAX: 26
+MIN: 22
+MAX: 22
 ---
 NAME: Rectangle
-TOP: 0
-BOTTOM: 0
-RIGHT: 0
-LEFT: 0
+TOP: 95
+BOTTOM: 111
+RIGHT: 65
+LEFT: 47
 SIZE: 3
-LINK_1: victory_road_1f
-LINK_2: victory_road_3f
+LINK_1: route_23
+LINK_2: victory_road_2f

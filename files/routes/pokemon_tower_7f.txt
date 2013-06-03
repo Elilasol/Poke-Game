@@ -13,3 +13,9 @@ NAME: Haunter
 RATE: 15
 MIN: 28
 MAX: 30
+---
+NAME: Rectangle
+TOP: 175
+BOTTOM: 207
+RIGHT: 80
+LEFT: 95

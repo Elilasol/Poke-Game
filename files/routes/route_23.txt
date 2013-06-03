@@ -33,3 +33,12 @@ NAME: Spearow
 RATE: 15
 MIN: 26
 MAX: 26
+---
+NAME: Rectangle
+TOP: 111
+BOTTOM: 157
+RIGHT: 65
+LEFT: 47
+SIZE: 3
+LINK_1: victory_road_1f
+LINK_2: route_22

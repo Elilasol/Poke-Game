@@ -33,3 +33,12 @@ NAME: Vulpix
 RATE: 10
 MIN: 15
 MAX: 18
+---
+NAME: Rectangle
+TOP: 125
+BOTTOM: 146
+RIGHT: 305
+LEFT: 258
+SIZE: 2
+LINK_1: lavender_town
+LINK_2: saffron_city

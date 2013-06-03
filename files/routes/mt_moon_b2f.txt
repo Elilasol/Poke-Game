@@ -18,3 +18,12 @@ NAME: Zubat
 RATE: 49
 MIN: 9
 MAX: 12
+---
+NAME: Rectangle
+TOP: 0
+BOTTOM: 0
+RIGHT: 0
+LEFT: 0
+SIZE: 2
+LINK_1: route_4
+LINK_2: mt_moon_b1f

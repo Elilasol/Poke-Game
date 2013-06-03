@@ -58,6 +58,8 @@ class Island
 
     @trainers.each do |i|
       Decision_Tree.new(i, @trainer_array)
+      i.calculate_averages
+
       total_level += i.average_level
       total_iv += i.average_iv
       if top_iv < i.top_iv

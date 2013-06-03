@@ -1,0 +1,9 @@
+#---
+NAME: Rectangle
+TOP: 95
+BOTTOM: 113
+RIGHT: 95
+LEFT: 80
+SIZE: 1
+LINK_1: viridian_forest
+LINK_2: route_3

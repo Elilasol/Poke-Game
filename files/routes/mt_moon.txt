@@ -18,3 +18,12 @@ NAME: Zubat
 RATE: 79
 MIN: 6
 MAX: 11
+---
+NAME: Rectangle
+TOP: 80
+BOTTOM: 95
+RIGHT: 175
+LEFT: 144
+SIZE: 2
+LINK_1: pewter_city
+LINK_2: mt_moon

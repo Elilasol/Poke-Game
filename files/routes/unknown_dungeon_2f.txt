@@ -43,3 +43,12 @@ NAME: Wigglytuff
 RATE: 5
 MIN: 54
 MAX: 54
+---
+NAME: Rectangle
+TOP: 0
+BOTTOM: 0
+RIGHT: 0
+LEFT: 0
+SIZE: 2
+LINK_1: unknown_dungeon
+LINK_2: unknown_dungeon_b2f

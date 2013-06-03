@@ -18,3 +18,12 @@ NAME: Spearow
 RATE: 35
 MIN: 8
 MAX: 12
+---
+NAME: Rectangle
+TOP: 80
+BOTTOM: 95
+RIGHT: 240
+LEFT: 175
+SIZE: 1
+LINK_1: cerulean_city
+LINK_2: mt_moon_b2f

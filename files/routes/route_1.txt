@@ -8,3 +8,12 @@ NAME: Pidgey
 RATE: 50
 MIN: 2
 MAX: 5
+---
+NAME: Rectangle
+TOP: 175
+BOTTOM: 207
+RIGHT: 95
+LEFT: 80
+SIZE: 2
+LINK_1: pallet_town
+LINK_2: viridian_city

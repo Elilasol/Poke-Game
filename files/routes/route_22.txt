@@ -18,3 +18,12 @@ NAME: Spearow
 RATE: 15
 MIN: 3
 MAX: 5
+---
+NAME: Rectangle
+TOP: 159
+BOTTOM: 175
+RIGHT: 80
+LEFT: 47
+SIZE: 2
+LINK_1: viridian_city
+LINK_2: route_23

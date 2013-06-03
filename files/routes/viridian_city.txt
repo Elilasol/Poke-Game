@@ -1,0 +1,10 @@
+#---
+NAME: Rectangle
+TOP: 159
+BOTTOM: 175
+RIGHT: 95
+LEFT: 80
+SIZE: 1
+LINK_1: route_2
+LINK_2: route_1
+LINK_3: route_22

@@ -33,3 +33,9 @@ NAME: Vulpix
 RATE: 10
 MIN: 18
 MAX: 20
+---
+NAME: Rectangle
+TOP: 175
+BOTTOM: 207
+RIGHT: 80
+LEFT: 95

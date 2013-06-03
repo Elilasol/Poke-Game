@@ -1,0 +1,7 @@
+NAME: Rectangle
+TOP: 80
+BOTTOM: 95
+RIGHT: 65
+LEFT: 47
+SIZE: 1
+LINK_1: victory_road_3f

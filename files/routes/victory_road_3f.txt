@@ -38,3 +38,12 @@ NAME: Zubat
 RATE: 15
 MIN: 22
 MAX: 22
+---
+NAME: Rectangle
+TOP: 0
+BOTTOM: 0
+RIGHT: 0
+LEFT: 0
+SIZE: 3
+LINK_1: victory_road_2f
+LINK_2: indigo_plateau

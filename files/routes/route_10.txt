@@ -18,3 +18,12 @@ NAME: Voltorb
 RATE: 40
 MIN: 14
 MAX: 17
+---
+NAME: Rectangle
+TOP: 113
+BOTTOM: 125
+RIGHT: 321
+LEFT: 305
+SIZE: 2
+LINK_1: rock_tunnel_basement
+LINK_2: lavender_town

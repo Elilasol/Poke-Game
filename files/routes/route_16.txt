@@ -18,3 +18,9 @@ NAME: Spearow
 RATE: 40
 MIN: 20
 MAX: 22
+---
+NAME: Rectangle
+TOP: 175
+BOTTOM: 207
+RIGHT: 80
+LEFT: 95

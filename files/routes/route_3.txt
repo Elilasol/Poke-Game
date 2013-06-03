@@ -13,3 +13,12 @@ NAME: Jigglypuff
 RATE: 10
 MIN: 3
 MAX: 7
+---
+NAME: Rectangle
+TOP: 95
+BOTTOM: 113
+RIGHT: 161
+LEFT: 95
+SIZE: 2
+LINK_1: pewter_city
+LINK_2: mt_moon

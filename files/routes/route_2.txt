@@ -18,3 +18,12 @@ NAME: Caterpie
 RATE: 15
 MIN: 3
 MAX: 5
+---
+NAME: Rectangle
+TOP: 142
+BOTTOM: 159
+RIGHT: 95
+LEFT: 80
+SIZE: 1
+LINK_1: diglett_cave
+LINK_2: viridian_forest

@@ -1,0 +1,7 @@
+#---
+NAME: Rectangle
+TOP: 207
+BOTTOM: 223
+RIGHT: 95
+LEFT: 80
+SIZE: 1

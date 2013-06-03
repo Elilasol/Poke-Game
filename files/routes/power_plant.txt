@@ -28,3 +28,11 @@ NAME: Voltorb
 RATE: 25
 MIN: 20
 MAX: 22
+---
+NAME: Rectangle
+TOP: 80
+BOTTOM: 95
+RIGHT: 321
+LEFT: 305
+SIZE: 2
+LINK_1: route_10

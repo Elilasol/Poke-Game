@@ -44,7 +44,7 @@ class Trainer
         top_iv = pokemon.average_iv
       end
     end
-    
+
     @average_level = (total_level / pokemon.size).to_f
     @average_iv = (average_iv / pokemon.size).to_f
     @top_iv = top_iv
@@ -62,6 +62,7 @@ class Trainer
       poke = "Squirtle"
     end
     Pokemon.new(poke, 5, owner)
+    #self.calculate_averages
   end
   
   def random_name(sex)

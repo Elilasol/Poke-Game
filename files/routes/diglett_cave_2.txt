@@ -10,10 +10,10 @@ MIN: 29
 MAX: 31
 ---
 NAME: Rectangle
-TOP: 128
-BOTTOM: 142
-RIGHT: 95
-LEFT: 80
+TOP: 177
+BOTTOM: 190
+RIGHT: 270
+LEFT: 260
 SIZE: 1
-LINK_1: route_2
-LINK_2: diglett_cave_2
+LINK_1: diglett_cave
+LINK_2: route_11

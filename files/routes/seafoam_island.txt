@@ -53,3 +53,9 @@ NAME: Zubat
 RATE: 10
 MIN: 21
 MAX: 21
+---
+NAME: Rectangle
+TOP: 175
+BOTTOM: 207
+RIGHT: 80
+LEFT: 95

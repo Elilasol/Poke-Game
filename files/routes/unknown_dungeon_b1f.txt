@@ -43,3 +43,11 @@ NAME: Sandslash
 RATE: 5
 MIN: 57
 MAX: 57
+---
+NAME: Rectangle
+TOP: 0
+BOTTOM: 0
+RIGHT: 0
+LEFT: 0
+SIZE: 2
+LINK_1: unknown_dungeon_2f

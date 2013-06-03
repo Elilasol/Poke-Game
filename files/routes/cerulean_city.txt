@@ -1,0 +1,12 @@
+#---
+NAME: Rectangle
+TOP: 80
+BOTTOM: 95
+RIGHT: 254
+LEFT: 240
+SIZE: 1
+LINK_1: route_4
+LINK_2: route_24
+LINK_3: route_9
+LINK_4: route_5
+LINK_5: unkown_dungeon

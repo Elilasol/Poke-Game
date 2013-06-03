@@ -38,3 +38,12 @@ NAME: Weedle
 RATE: 10
 MIN: 7
 MAX: 7
+---
+NAME: Rectangle
+TOP: 66
+BOTTOM: 80
+RIGHT: 254
+LEFT: 240
+SIZE: 1
+LINK_1: cerulean_city
+LINK_2: route_25

@@ -23,3 +23,9 @@ NAME: Pidgey
 RATE: 20
 MIN: 13
 MAX: 16
+---
+NAME: Rectangle
+TOP: 175
+BOTTOM: 207
+RIGHT: 80
+LEFT: 95

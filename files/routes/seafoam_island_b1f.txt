@@ -48,3 +48,9 @@ NAME: Staryu
 RATE: 15
 MIN: 32
 MAX: 32
+---
+NAME: Rectangle
+TOP: 175
+BOTTOM: 207
+RIGHT: 80
+LEFT: 95

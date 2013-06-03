@@ -3,3 +3,9 @@ NAME: Tangela
 RATE: 100
 MIN: 17
 MAX: 28
+---
+NAME: Rectangle
+TOP: 175
+BOTTOM: 207
+RIGHT: 80
+LEFT: 95
