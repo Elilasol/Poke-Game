@@ -18,6 +18,10 @@ class GameWindow < Gosu::Window
     @map_location_x = (width - @map_width) / 2
     @map_location_y = (height - @map_height) / 2
     
+    @route_clicked = nil
+
+    @click
+    
     # Color
     angle = 220
     float_s = 0.887
@@ -167,7 +171,7 @@ class GameWindow < Gosu::Window
     @kanto.routes.each do |route|
       
       if route.is_mouse_hovering(@px-@map_location_x, @py-@map_location_y)
-        puts "Hovering over #{route.name}"
+        #puts "Hovering over #{route.name}"
         
         increase_route_highlight_width = 4
         
@@ -181,11 +185,11 @@ class GameWindow < Gosu::Window
         draw_outline_rectangle(top, bottom, left, right, line_width, @map_highlight_color)
         
         #Name of route
-        text_width = @font.text_width(route.name)
+        text_width = @font.text_width(route.display_name)
         route_x = @map_location_x+(@map_width/2)-(text_width/2)
         draw_filled_rectangle(@map_location_y+4, @map_location_y+32, route_x-4, route_x+text_width+10, @interface_color)
         draw_filled_rectangle(@map_location_y+8, @map_location_y+28, route_x, route_x+text_width+6, @interface_color_dark)
-        @font.draw(route.name, route_x+3, @map_location_y+8, ZOrder::UI, 1.0, 1.0, @text_color)
+        @font.draw(route.display_name, route_x+3, @map_location_y+8, ZOrder::UI, 1.0, 1.0, @text_color)
       end  
     end
   end
@@ -261,12 +265,28 @@ class GameWindow < Gosu::Window
     @font.draw("Top lvl: #{@best_trainer_level}", 10, (@map_location_y-10+(120)), ZOrder::UI, 1.0, 1.0, @text_color)
     @font.draw("test text", 10, (@map_location_y-10+(140)), ZOrder::UI, 1.0, 1.0, @text_color)
     @font.draw("test text", 10, (@map_location_y-10+(160)), ZOrder::UI, 1.0, 1.0, @text_color)
-    
+
+    # Center right quad
+    if @route_clicked != nil
+      @font.draw("#{@route_clicked.display_name}", 10+@map_location_x+@map_width, (@map_location_y-10+(20)), ZOrder::UI, 1.0, 1.0, @text_color)
+      @font.draw("#{@route_clicked.name}", 10+@map_location_x+@map_width, (@map_location_y-10+(40)), ZOrder::UI, 1.0, 1.0, @text_color)
+      @font.draw("#{@route_clicked.name}", 10+@map_location_x+@map_width, (@map_location_y-10+(60)), ZOrder::UI, 1.0, 1.0, @text_color)
+    end
     
   end
 
   def button_down(id)
-    if id == Gosu::KbEscape
+    case id
+      
+    when Gosu::MsLeft
+      @kanto.routes.each do |route|
+        if route.is_mouse_hovering(@px-@map_location_x, @py-@map_location_y)
+          puts route.name
+          @route_clicked = route
+        end
+      end
+
+    when  Gosu::KbEscape
       close
     end
   end

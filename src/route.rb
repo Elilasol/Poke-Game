@@ -1,7 +1,7 @@
 require 'pokemon_hash'
 
 class Route
-  attr_accessor :size_info
+  attr_accessor :size_info, :name
   
   def initialize(file)
     
@@ -17,7 +17,7 @@ class Route
 
   def is_mouse_hovering(mx, my)    
 
-    puts "(#{mx} #{my}) (#{@size_info["LEFT"]} #{@size_info["TOP"]} #{@size_info["RIGHT"]} #{@size_info["BOTTOM"]})"
+    #puts "(#{mx} #{my}) (#{@size_info["LEFT"]} #{@size_info["TOP"]} #{@size_info["RIGHT"]} #{@size_info["BOTTOM"]})"
     (mx > @size_info["LEFT"] and my > @size_info["TOP"]) and (mx < @size_info["RIGHT"] and my < @size_info["BOTTOM"])
     
   end
@@ -52,8 +52,8 @@ class Route
     @pokemon
   end
   
-  def name
-    @name
+  def display_name
+    @name.split('_').map(&:capitalize).join(' ')
   end
   
   def maxlevel
