@@ -269,8 +269,9 @@ class GameWindow < Gosu::Window
     # Center right quad
     if @route_clicked != nil
       @font.draw("#{@route_clicked.display_name}", 10+@map_location_x+@map_width, (@map_location_y-10+(20)), ZOrder::UI, 1.0, 1.0, @text_color)
-      @font.draw("#{@route_clicked.name}", 10+@map_location_x+@map_width, (@map_location_y-10+(40)), ZOrder::UI, 1.0, 1.0, @text_color)
-      @font.draw("#{@route_clicked.name}", 10+@map_location_x+@map_width, (@map_location_y-10+(60)), ZOrder::UI, 1.0, 1.0, @text_color)
+      @route_clicked.pokemon.each_with_index do |pokemon, index|
+        @font.draw("#{pokemon.first}", 10+@map_location_x+@map_width, (@map_location_y-10+40+(20*index)), ZOrder::UI, 1.0, 1.0, @text_color)
+      end
     end
     
   end
